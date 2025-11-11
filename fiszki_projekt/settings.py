@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'fiszki'
 ]
 
-STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 
 MIDDLEWARE = [
