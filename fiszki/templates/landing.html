@@ -1,0 +1,181 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>recolearn – Ucz się naukowo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
+    body {
+      font-family: 'Open Sans', Arial, sans-serif;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 38px 50px 14px 54px;
+      background: transparent;
+    }
+    .logo {
+      height: 46px;
+      margin-right: 28px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      margin-left: 26px;
+      font-size: 21px;
+    }
+    .nav-links a {
+      color: #36B5E0;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: color 0.18s;
+      padding-bottom: 2px;
+      border-bottom: 2px solid transparent;
+    }
+    .nav-links a.active, .nav-links a:hover {
+      color: #0FB2B9;
+      border-bottom: 2px solid #47C2D7;
+    }
+
+    .main-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 65px;
+      min-height: 67vh;
+      gap: 36px;
+    }
+
+    .illu-container img {
+        margin-top: 60px;
+    }
+
+
+    .text-content {
+      max-width: 560px;
+      width: 52%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+    .tagline {
+      color: #15b6c1;
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 7px;
+      letter-spacing: 1.1px;
+    }
+    .main-header {
+      font-size: 53px;
+      color: #2196C0;
+      font-weight: 800;
+      margin-top: 8px;
+    }
+    .desc {
+      margin: 12px 0 7px 0;
+      font-size: 18px;
+      color: #5C6F87;
+      line-height: 1.7;
+      font-weight: 500;
+    }
+    .science {
+      margin: 0 0 22px 0;
+      font-size: 15.5px;
+      color: #13A1C3;
+      font-style: italic;
+      font-weight: 600;
+    }
+    .actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .action-btn, .login-btn {
+      font-size: 19px;
+      font-weight: 700;
+      border-radius: 8px;
+      outline: none;
+      border: none;
+      padding: 13px 34px;
+      transition: background 0.19s, color 0.19s;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .action-btn {
+      background: #FFE073;
+      color: #1767a8;
+      border: 2px solid #FFDC48;
+    }
+    .action-btn:hover {
+      background: #fffbe7;
+      color: #734c15;
+    }
+    .login-btn {
+      background: #fff;
+      color: #2196C0;
+      border: 2px solid #9EE2F2;
+    }
+    .login-btn:hover {
+      background: #e6faff;
+      color: #0b749b;
+    }
+    @media (max-width: 1000px) {
+      .main-content { flex-direction: column-reverse; gap: 20px; padding: 0 16px; }
+      .illu-container, .text-content { width: 100%; max-width: none; }
+      .illu-container img { margin: auto; display: block; }
+      .main-header { font-size: 30px; }
+      .tagline { font-size: 25px;}
+    }
+    @media (max-width: 650px) {
+      .navbar { flex-direction: column; align-items: flex-start; padding: 22px 16px 10px 16px;}
+      .nav-links { margin: 0 0 0 0; flex-wrap: wrap; font-size: 17px; }
+      .main-header { font-size: 22px;}
+      .desc { font-size: 14.5px;}
+      .illu-container img { width: 99%; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <img src="{% static 'default-monochrome-black.svg' %}" alt="Logo recolearn" class="logo">
+    <div class="nav-links">
+      <a href="/" class="active">Home</a>
+      <a href="home">Powtórki</a>
+      <a href="/teachers">Dla nauczycieli</a>
+      <a href="/about">O platformie</a>
+      <a href="/contact">Kontakt</a>
+    </div>
+  </nav>
+  <section class="main-content">
+    <div class="illu-container">
+      <img src="../static/undraw_book-lover_m9n3.svg" alt="Ilustracja nauka online">
+    </div>
+    <div class="text-content">
+      <div class="tagline">Edukacja przyszłości</div>
+      <div class="main-header">
+        Skuteczne, szybkie powtórki i nauka<br>w oparciu o naukowe badania!
+      </div>
+      <div class="desc">
+        Recolearn to nowoczesna platforma do efektywnego powtarzania materiału, organizowania własnych zestawów zadań oraz nauki opartej o fiszki i quizy. Całość bazuje na badaniach naukowych (w tym krzywa zapominania Ebbinghausa i metoda nauki rozłożonej w czasie), co realnie zwiększa skuteczność i utrwalenie wiedzy!
+      </div>
+      <div class="science">
+        Metoda powtarzania naukowego została potwierdzona przez liczne badania psychologiczne i neurobiologiczne.
+      </div>
+      <div class="actions">
+        <a href="/accounts/register/" class="action-btn">Rozpocznij za darmo</a>
+        <a href="/accounts/login/" class="login-btn">Zaloguj się</a>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

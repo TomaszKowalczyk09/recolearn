@@ -3,9 +3,13 @@ from django.contrib.auth.forms import UserCreationForm
 from django.urls import path
 from django.views.generic.edit import CreateView
 from . import views
+from django.views.generic import TemplateView
+
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('', TemplateView.as_view(template_name="landing.html"), name='landing'),
+
+    path('app/', views.home, name='home'),
     path('add_set/', views.add_set, name='add_set'),
     path('set/<int:set_id>/', views.view_set, name='view_set'),
     path('set/<int:set_id>/add_flashcard/', views.add_flashcard, name='add_flashcard'),

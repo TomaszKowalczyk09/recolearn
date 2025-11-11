@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 LOGOUT_REDIRECT_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/app/'    # lub inny URL Twojego „panelu”
 
 
 # Application definition
