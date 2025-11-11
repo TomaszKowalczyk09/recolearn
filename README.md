@@ -1,4 +1,4 @@
-![Projekt cover](static/cover.png)
+![Projekt cover](fiszki/static/cover.png)
 
 # recolearn
 
