@@ -1,0 +1,106 @@
+body {
+    font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
+    background: #f7f9fc;
+    color: #23272f;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 700px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 3px 16px rgba(40,50,80,0.12);
+    padding: 34px 34px 25px 34px;
+}
+h1, h2 {
+    color: #274ac6;
+    margin-bottom: 18px;
+    font-weight: 600;
+}
+h3 {
+    color: #4c4f61;
+    font-size: 1.34em;
+    margin-top: 36px;
+}
+ul, li {
+    font-size: 1.07em;
+}
+.flashcard-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 12px 0;
+}
+.flashcard-list li {
+    background: #f3f6fa;
+    border-radius: 7px;
+    margin: 8px 0;
+    padding: 11px 18px;
+    font-size: 1.08em;
+    border-left: 4px solid #265be9;
+}
+.btn, button, a.button {
+    background: #265be9;
+    color: #fff !important;
+    border: none;
+    border-radius: 7px;
+    padding: 9px 22px;
+    text-decoration: none;
+    margin: 7px 10px 0 0;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.18s;
+    display: inline-block;
+    box-shadow: 0 1px 8px rgba(60,90,220,0.09);
+    font-weight: 500;
+}
+.btn:hover, button:hover, a.button:hover {
+    background: #113170;
+}
+form input, form textarea {
+    padding: 8px;
+    border: 1px solid #dbe2ef;
+    border-radius: 4px;
+    margin-bottom: 13px;
+    width: 100%;
+    background: #f3f6fa;
+    font-size: 1em;
+}
+form label {
+    display: block;
+    margin-bottom: 4px;
+    color: #465175;
+}
+.error {
+    color: #b71c1c;
+    background: #ffeaea;
+    border-radius: 7px;
+    padding: 9px 14px;
+    margin-bottom: 14px;
+}
+nav {
+    margin-bottom: 18px;
+    text-align: right;
+}
+
+.stars {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 8px;
+    font-size: 2em;
+    margin-bottom: 22px;
+}
+.stars input[type="radio"] {
+    display: none;
+}
+.stars label {
+    color: #cccccc;
+    cursor: pointer;
+    transition: color .2s;
+    user-select: none;
+}
+.stars label.active {
+    color: #ffb300 !important;
+}
+

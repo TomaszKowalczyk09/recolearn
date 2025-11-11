@@ -1,0 +1,24 @@
+{% extends "fiszki/base.html" %}
+{% block title %}Zestaw — recolearn{% endblock %}
+{% block content %}
+    <h1 style="color:#22a89b;text-align:center;margin-bottom:32px;">Zestaw: {{ set.title }}</h1>
+    {% if set.description %}
+        <div style="color:#19989a;font-size:1.1em;margin-bottom:20px;">{{ set.description }}</div>
+    {% endif %}
+    <h2 style="color:#089386;margin:18px 0 10px 0;font-size:1.13em;">Fiszki:</h2>
+    <ul class="flashcard-list" style="max-width:580px;">
+        {% for f in flashcards %}
+            <li style="background:#f3f8fc;border-radius:8px;margin-bottom:11px;padding:15px 16px;color:#189392;">
+                <b>{{ f.question }}</b>
+                <span style="color:#22a89b;margin:0 12px;">→</span>{{ f.answer }}
+            </li>
+        {% empty %}
+            <li style="background:#f8f9fa;border-radius:8px;padding:15px 16px;color:#999;">Brak fiszek w tym zestawie.</li>
+        {% endfor %}
+    </ul>
+    <div style="margin-top:30px;">
+        <a href="{% url 'add_flashcard' set.id %}" class="btn" style="background:#18af92;">Dodaj nową fiszkę</a>
+        <a href="{% url 'review_flashcards' set.id %}" class="btn" style="background:#30b2e3;">Rozpocznij powtórkę</a>
+        <a href="{% url 'home' %}" class="btn" style="background:#19989a;">Powrót do listy zestawów</a>
+    </div>
+{% endblock %}

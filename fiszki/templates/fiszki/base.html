@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}recolearn{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'fiszki/style.css' %}">
+    <style>
+        html,body { background: #fff; min-height: 100vh; }
+        .layout { display:flex; min-height:100vh; }
+        .sidebar {
+            background: linear-gradient(135deg, #16c9ab 0%, #30b2e3 100%);
+            width: 220px; min-width: 170px; box-shadow: 2px 0 18px rgba(0,0,0,0.09);
+            display:flex; flex-direction: column; align-items:center; padding:36px 0 0 0;
+        }
+        .logo { width:100px; margin-bottom:44px; }
+        .sidebar-links { margin-top:36px; width:90%; }
+        .sidebar-links a {
+            display:block; color:#fff; background:rgba(47,166,205,0.17);
+            font-size:1.09em; border-radius:9px; padding:13px 10px; margin-bottom:18px; text-decoration:none;
+            font-weight:600; text-align:center; transition:background .17s;
+        }
+        .sidebar-links a:hover { background:rgba(22,201,171,0.31); }
+        .logout-area { margin-top:auto; margin-bottom:44px; width:90%; }
+        .logout-area button { width:100%; margin:0; background: #30b2e3; }
+        .logout-area button:hover { background: #16c9ab; }
+        .main { flex:1; padding:55px 0 30px 0; display:flex; flex-direction:column; align-items:center;}
+        @media (max-width:900px){ .layout{flex-direction:column;} .sidebar{width:100%;min-width:0;padding-bottom:0;} .main{padding-top:18px;}}
+    </style>
+    {% block extrahead %}{% endblock %}
+</head>
+<body>
+<div class="layout">
+    <nav class="sidebar">
+        <img src="{% static 'default-monochrome-white.svg' %}" alt="recolearn logo" class="logo"/>
+        <div class="sidebar-links">
+            <a href="{% url 'home' %}">Zestawy</a>
+            <a href="{% url 'add_set' %}">Dodaj zestaw</a>
+        </div>
+        <form class="logout-area" method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button class="btn" type="submit">Wyloguj</button>
+        </form>
+    </nav>
+    <main class="main">
+        {% block content %}{% endblock %}
+    </main>
+</div>
+</body>
+</html>

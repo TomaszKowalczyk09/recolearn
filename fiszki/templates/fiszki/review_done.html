@@ -1,0 +1,26 @@
+{% extends "fiszki/base.html" %}
+{% block title %}Raport powtórki — recolearn{% endblock %}
+{% block content %}
+    <h1 style="color:#22a89b;margin-bottom:18px;text-align:center;">Raport powtórki: {{ set.title }}</h1>
+    <h2 style="color:#089386;margin-top:30px;">✅ Opanowane fiszki:</h2>
+    {% if mastered %}
+        <ul class="flashcard-list">
+            {% for f in mastered %}
+                <li><b>{{ f.question }}</b> &rarr; {{ f.answer }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Żadna fiszka nie została jeszcze uznana za opanowaną.</p>
+    {% endif %}
+    <h2 style="color:#30b2e3;margin-top:18px;">🔄 Do powtórzenia:</h2>
+    {% if to_review %}
+        <ul class="flashcard-list">
+            {% for f in to_review %}
+                <li><b>{{ f.question }}</b> &rarr; {{ f.answer }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Wszystkie fiszki uznane za opanowane!</p>
+    {% endif %}
+    <a href="{% url 'review_flashcards' set.id %}" class="btn" style="margin-top:32px;background:#30b2e3;">Rozpocznij nową powtórkę</a>
+{% endblock %}

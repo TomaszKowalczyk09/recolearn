@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zaloguj się — recolearn</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        html, body { height: 100%; margin: 0; }
+        body {
+            background: #fff;
+            font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
+            min-height:100vh;
+        }
+        .login-layout {
+            display: flex;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-illustration {
+            background: linear-gradient(135deg, #16c9ab 0%, #30b2e3 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48vw;
+            min-width: 320px;
+            height: 100vh;
+        }
+        .login-illustration img {
+            max-width: 420px;
+            width: 80%;
+            height: auto;
+        }
+        .login-form-col {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height:100vh;
+        }
+        .login-card {
+            background: #fff;
+            border-radius: 22px;
+            box-shadow: 0 10px 36px rgba(16,140,180,0.13);
+            padding: 46px 38px 34px 38px;
+            max-width: 380px;
+            width: 98%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .login-logo {
+            display: block;
+            height: 54px;
+            margin-bottom: 12px;
+            margin-top: -10px;
+            max-width: 120px;
+        }
+        .login-card h2 {
+            color: #23b1a3;
+            font-weight: 800;
+            font-size: 2em;
+            margin-bottom: 9px;
+            margin-top: 0;
+            text-align: center;
+        }
+        .login-card label {
+            color: #15a3ab;
+            font-weight: 600;
+            font-size: 1.06em;
+            margin-top: 13px;
+            margin-bottom: 3px;
+            display: block;
+        }
+        .login-card input[type="text"], .login-card input[type="password"] {
+            width: 100%;
+            padding: 15px 16px;
+            margin-bottom: 14px;
+            border-radius: 12px;
+            border: 1.2px solid #d2f1f3;
+            background: #f3fafd;
+            font-size: 1.09em;
+        }
+        .login-card input:focus { border-color:#13b59c; background:#eafdff; }
+        .login-btn {
+            width: 100%;
+            background: #23b1a3;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.16em;
+            padding: 15px 0;
+            border: none;
+            border-radius: 14px;
+            margin-top: 13px;
+            margin-bottom: 3px;
+            box-shadow: 0 1px 8px rgba(30,200,200,0.10);
+            transition: background .13s;
+            cursor: pointer;
+        }
+        .login-btn:hover { background:#30b2e3; }
+        .forgot {
+            color: #079ad6;
+            text-align: right;
+            width: 100%;
+            margin-top: 9px;
+            text-decoration: none;
+            font-size: 0.97em;
+            display: inline-block;
+        }
+        @media (max-width:1000px){
+            .login-layout{ flex-direction:column; }
+            .login-illustration{ width:100vw; min-width:0; height:280px; justify-content:center; }
+            .login-form-col{ height:auto; min-height:auto; }
+        }
+        @media (max-width:470px){
+            .login-card{padding:18px 5vw;}
+        }
+    </style>
+</head>
+<body>
+<div class="login-layout">
+    <div class="login-illustration">
+        <img src="{% static 'undraw_focused_m9bj.svg' %}" alt="Ilustracja logowania">
+    </div>
+    <div class="login-form-col">
+        <form method="post" class="login-card">
+            {% csrf_token %}
+            <img src="{% static 'default-monochrome-black.svg' %}" alt="recolearn" class="login-logo">
+            <h2>Witaj ponownie!</h2>
+            {% if form.errors %}
+                <div style="color:#b01234; margin-bottom:10px;font-weight:600;">Nieprawidłowe dane logowania</div>
+            {% endif %}
+            <label for="id_username">Adres email lub nazwa użytkownika:</label>
+            {{ form.username }}
+            <label for="id_password">Hasło:</label>
+            {{ form.password }}
+            <button class="login-btn" type="submit">Zaloguj się</button>
+            <a href="{% url 'password_reset' %}" class="forgot">Zapomniałeś hasła?</a>
+        <ul></ul>
+        <div class="login-link">
+            Nie masz konta?
+            <a href="{% url 'register' %}" style="color:#23b1a3; font-weight:600; text-decoration:underline; margin-left:2px;">
+                Zarejestruj się
+            </a>
+        </div>
+
+        </form>
+    </div>
+</div>
+</body>
+</html>

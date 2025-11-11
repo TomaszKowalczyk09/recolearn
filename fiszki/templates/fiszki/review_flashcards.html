@@ -1,0 +1,45 @@
+{% extends "fiszki/base.html" %}
+{% block title %}Powtórka — recolearn{% endblock %}
+{% block extrahead %}
+    <style>
+        .answer-box {
+            background: #f3f6fa;
+            border-radius: 8px;
+            padding: 16px 28px;
+            margin: 22px 0 8px 0;
+            color: #19989a;
+            font-size: 1.15em;
+            letter-spacing:0.2px;
+            display: inline-block;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <h1>Powtórka zestawu: {{ set.title }}</h1>
+    <p style="margin-bottom:16px; font-size:1.07em;">
+        Fiszka {{ idx|add:1 }} z {{ total }}
+    </p>
+    <div><b>Pytanie:</b> {{ card.question }}</div>
+    {% if not show_answer %}
+        <a href="?idx={{ idx }}&show=1" class="btn" style="margin: 22px 0;display:inline-block;">Pokaż odpowiedź</a>
+    {% else %}
+        <div class="answer-box"><b>Odpowiedź:</b> {{ card.answer }}</div>
+        <form method="post" style="margin-top:18px;">
+            {% csrf_token %}
+            <label for="quality" style="font-size:1.05em;">Jak oceniasz swoją znajomość tej fiszki?</label>
+            <br>
+            <input type="range" id="quality" name="quality" min="1" max="10" value="5" style="width:60%; margin:12px 0;">
+            <br>
+            <span id="qval" style="font-size:1.19em; color: #089386;">5</span> / 10
+            <br><br>
+            <button class="btn" type="submit">Zapisz ocenę</button>
+        </form>
+        <script>
+            const range = document.getElementById('quality');
+            const qval = document.getElementById('qval');
+            if(range && qval) {
+                range.addEventListener('input', function(){ qval.textContent = range.value; });
+            }
+        </script>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "fiszki/base.html" %}
+{% block title %}Zestawy fiszek — recolearn{% endblock %}
+{% block content %}
+<h1 style="color:#22a89b;text-align:center;margin-bottom:36px;">Twoje zestawy fiszek</h1>
+<div class="sets-list" style="width:100%; max-width:510px;">
+    {% if sets %}
+        {% for set in sets %}
+            <div class="set-card" style="background:#fff;border-radius:13px;box-shadow:0 4px 25px rgba(30,170,198,0.10);padding:27px 28px;margin-bottom:24px;">
+                <div class="set-title" style="font-size:1.16em;color:#089386;font-weight:700;margin-bottom:13px;">
+                    <a href="{% url 'view_set' set.id %}" style="color:#089386;text-decoration:none;">{{ set.title }}</a>
+                </div>
+                {% if set.description %}
+                    <div class="set-desc" style="color:#19989a;font-size:1.03em;margin-bottom:10px;">{{ set.description }}</div>
+                {% endif %}
+                <div class="set-actions" style="display:flex;gap:18px;margin-top:9px;">
+                    <a href="{% url 'view_set' set.id %}" class="btn" style="background:#30b2e3;">Przeglądaj zestaw</a>
+                    <a href="{% url 'review_flashcards' set.id %}" class="btn" style="background:#18af92;">Powtórka</a>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="set-card" style="background:#fff;padding:28px;border-radius:13px;margin-bottom:26px;">
+            <p style="color: #19989a;">Nie masz jeszcze żadnych zestawów.</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
